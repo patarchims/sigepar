@@ -7,11 +7,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\DataJemaatController;
 use App\Http\Controllers\DataKeuanganController;
 use App\Http\Controllers\DataSakramenController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\JemaatController;
 use App\Http\Controllers\LandingpagesController;
 use App\Http\Controllers\PendaftaranSakramenController;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PengurusGerejaController;
 use App\Http\Controllers\RegisterController;
@@ -92,6 +94,18 @@ Route::post('/peneguhanSidiCreate', [JemaatController::class, 'peneguhanSidiCrea
     Route::post('/DataPengurus_gereja/{id}/update', [PengurusGerejaController::class, 'update']);
     Route::get('/Pernikahan/detail/{id}', [DataSakramenController::class, 'pernikahanDetail']);
     Route::get('/Peneguhan_sidi/detail/{id}', [DataSakramenController::class, 'peneguhan_sidiDetail']);
+    Route::get('/pengumuman', [PengumumanController::class, 'index']);
+    Route::get('/pengumuman/delete/{id}', [PengumumanController::class, 'deletePengumuman']);
+    Route::get('/pengumuman/{id}/edit', [PengumumanController::class, 'pengumumanEdit']);
+    Route::get('/tambahPengumuman', [PengumumanController::class, 'tambahPengumuman']);
+    Route::post('/updatePengumuman/{id}/edit', [PengumumanController::class, 'updatePengumuman']);
+    Route::post('/pengumumanCreate', [PengumumanController::class, 'pengumumanCreate']);
+    Route::get('/tambahGallery', [GalleryController::class, 'tambahGallery']);
+    Route::get('/gallery', [GalleryController::class, 'index']);
+    Route::get('/gallery/{id}/delete', [GalleryController::class, 'deleteGallery']);
+    Route::get('/gallery/{id}/detail', [GalleryController::class, 'galleryDetail']);
+    Route::post('/galleryCreate', [GalleryController::class, 'galleryCreate']);
+
 });
 
 

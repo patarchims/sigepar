@@ -131,6 +131,12 @@
 <script src="{{asset('assets/plugins/dropzone/min/dropzone.min.js')}}"></script>
 <script src="https://kit.fontawesome.com/6b6c00fcbd.js" crossorigin="anonymous"></script>
 
+<script src="{{asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
 <script>
   $(function () {
     //Initialize Select2 Elements

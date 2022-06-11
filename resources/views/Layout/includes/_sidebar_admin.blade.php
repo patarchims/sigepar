@@ -153,7 +153,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a href="#" class="nav-link">
+            <a href="/pengumuman" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
               <p>
                 Announcement
@@ -161,7 +161,7 @@
             </a>
           </li>
           <li class="nav-item active">
-            <a href="#" class="nav-link">
+            <a href="/gallery" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
               <p>
                 Galery

@@ -91,11 +91,13 @@
 
 
     <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container d-md-flex py-4">
+  
+    </main>
+      <footer id="footer">
+        <div class="container d-md-flex py-4 text-center">
 
-            <div class="me-md-auto text-center text-md-start">
-                <div class="copyright">
+            <div class="me-md-auto text-center">
+                <div class="copyright text-center">
                     &copy; Copyright2022 <strong><span>HKI Resort Parsoburan</span></strong>. All Rights Reserved
                 </div>
                 <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -106,8 +108,7 @@
             </div>
             
         </div>
-    </main>
-    </footer><!-- End Footer -->
+    </footer>
      @include('Landing._login') 
     
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

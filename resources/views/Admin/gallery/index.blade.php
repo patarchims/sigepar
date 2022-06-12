@@ -52,9 +52,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 500px;">
-                @if(session('sukses'))
+                @if(session('success'))
                 <div class="alert alert-success" role="alert">
-                    {{session('sukses')}}
+                    {{session('success')}}
                 </div>
                 @endif
                 <table class="table table-head-fixed text-nowrap">
@@ -74,13 +74,13 @@
                         <td>{{$jemaat->nama_album}}</td>
                         <td>
                           <div class="text-center">
-                             <img height="50" width="50" src="{{asset('fileweb/' .$jemaat->gallery_album)}}" class="rounded" alt="...">
+                             <img height="50" width="50" src="{{asset('fileweb/' . $jemaat->gallery_album)}}" class="rounded" alt="...">
                           </div>
                         </td>
                         <td> 
-                            <a href="/gallery/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
-                            <a href="/gallery/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
-                             <a href="/gallery/{{$jemaat->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Gallery Ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="/album/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="/album/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
+                             <a href="/album/{{$jemaat->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Gallery Ini?')"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
 
                     </tr>

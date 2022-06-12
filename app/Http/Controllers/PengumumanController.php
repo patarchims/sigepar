@@ -29,6 +29,13 @@ class PengumumanController extends Controller
     {
         return view('Admin.pengumuman.tambah');
     }
+    
+    public function pengumumanDetail($id)
+    {
+         $jemaat = PengumumanModel::find($id);
+        return view('Admin.pengumuman.detail',['data' => $jemaat]);
+ 
+    }
 
     public function pengumumanCreate(Request $request)
     {

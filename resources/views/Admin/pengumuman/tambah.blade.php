@@ -53,7 +53,7 @@
 
                       <div class="form-group" >
                         <label for="quotes">Isi</label>
-                       <textarea class="form-control"  id="quotes" name="isi" >Quotes </textarea>
+                       <textarea class="form-control"  id="quotes" name="isi" > </textarea>
                       </div>  
                         <button type="submit" class="btn btn-primary btn-block">Tambahkan Data Pengumuman</button>   
                     </form>     

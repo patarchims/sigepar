@@ -33,7 +33,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Table Data Gallery HKI</h3> <br>
-                <a href="{{url('/tambahGallery')}}" class="btn btn-sm bg-success">
+                <a href="/galleryTambah/{{$id}}/add" class="btn btn-sm bg-success">
                     <i class="fas fa-users fas-sm"></i> Tambah Data Gallery
                   </a>               
                 <div class="card-tools">
@@ -51,17 +51,27 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 500px;">
-                @if(session('sukses'))
-                <div class="alert alert-success" role="alert">
-                    {{session('sukses')}}
+               @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                @endif
+              @endif
+
+                  @if(session('sukses'))
+                  <div class="alert alert-success" role="alert">
+                      {{session('sukses')}}
+                  </div>
+                  @endif
                 <table class="table table-head-fixed text-nowrap">
                   <thead text='center'>
                     <tr >
                       <th>No</th>
                       <th>Nama Gallery </th>
-                      <th>Gambar Album</th>
+                      <th>Gallery</th>
                       <th>Action</th>
                     </tr>
                    
@@ -76,16 +86,16 @@
                     @foreach ($data_jemaat as $jemaat)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$jemaat->nama_album}}</td>
+                        <td>{{$jemaat->album->nama_album}}</td>
                         <td>
-                          <div class="text-center">
-                             <img height="50" width="50" src="{{asset('fileweb/' .$jemaat->gallery_album)}}" class="rounded" alt="...">
+                           <div class="text-center">
+                             <img height="50" width="50" src="{{asset('fileweb/' . $jemaat->image_gallery)}}" class="rounded" alt="...">
                           </div>
+                
                         </td>
                         <td> 
-                            <a href="/gallery/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
-                            <a href="/gallery/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
-                             <a href="/gallery/{{$jemaat->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Gallery Ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                                         
+                             <a href="/gallery/{{$jemaat->id}}/delete/{{$id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Gallery Ini?')"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
 
                     </tr>

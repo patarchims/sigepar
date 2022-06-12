@@ -17,6 +17,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PengurusGerejaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +82,7 @@ Route::post('/peneguhanSidiCreate', [JemaatController::class, 'peneguhanSidiCrea
     Route::get('/Dashboard_admin', [AdminController::class, 'index']);
     Route::get('/Jemaat', [DataJemaatController::class, 'jemaat']);
     Route::get('/Data_Jemaat', [DataJemaatController::class, 'index']);
+    Route::get('Datajemaat/{id}/delete', [DataJemaatController::class, 'jemaatDelete']);
     Route::get('/TambahData_Jemaat', [DataJemaatController::class, 'v_tambah']);
     Route::post('/Data_jemaat/create', [DataJemaatController::class, 'create']);
     Route::get('/DataJemaat/{id}/detail', [DataJemaatController::class, 'detail']);
@@ -98,16 +100,32 @@ Route::post('/peneguhanSidiCreate', [JemaatController::class, 'peneguhanSidiCrea
     Route::get('/pengumuman/delete/{id}', [PengumumanController::class, 'deletePengumuman']);
     Route::get('/pengumuman/{id}/edit', [PengumumanController::class, 'pengumumanEdit']);
     Route::get('/tambahPengumuman', [PengumumanController::class, 'tambahPengumuman']);
+    Route::get('/pengumuman/{id}/detail', [PengumumanController::class, 'pengumumanDetail']);
     Route::post('/updatePengumuman/{id}/edit', [PengumumanController::class, 'updatePengumuman']);
     Route::post('/pengumumanCreate', [PengumumanController::class, 'pengumumanCreate']);
     Route::get('/tambahGallery', [GalleryController::class, 'tambahGallery']);
+    Route::post('/albumCreate', [GalleryController::class, 'albumCreate']);
     Route::get('/gallery', [GalleryController::class, 'index']);
     Route::get('/gallery/{id}/delete', [GalleryController::class, 'deleteGallery']);
     Route::get('/gallery/{id}/detail', [GalleryController::class, 'galleryDetail']);
-    Route::post('/galleryCreate', [GalleryController::class, 'galleryCreate']);
-
+    Route::post('/galleryCreate/{id}', [GalleryController::class, 'galleryCreate']);
+    Route::get('/dataPengurus/{id}/edit', [PengurusGerejaController::class, 'edit']);
+    Route::get('/dataPengurus/{id}/detail', [PengurusGerejaController::class, 'edit']);
+    Route::get('dataPengurus/{id}/delete', [PengurusGerejaController::class, 'delete']);
+    Route::get('galleryTambah/{id}/add', [GalleryController::class, 'galleryTambah']);
+    Route::post('/galleryImageCreate/{id}', [GalleryController::class, 'galleryImageCreate']);
+    Route::get('/gallery/{id}/delete/{idd}', [GalleryController::class, 'galleryDelete']);
+    Route::get('/album/{id}/delete', [GalleryController::class, 'albumDelete']);
+    Route::get('/album/{id}/edit', [GalleryController::class, 'albumEdit']);
+    Route::post('/albumUpdate/{id}', [GalleryController::class, 'albumUpdate']);
+    Route::get('/album/{id}/detail', [GalleryController::class, 'albumDetail']);
+    Route::get('/slider', [SliderController::class, 'index']);
+    Route::get('/tambahSlider', [SliderController::class, 'tambahSlider']);
+    Route::post('/sliderCreate', [SliderController::class, 'sliderCreate']);
+    Route::get('/slider/{id}/delete', [SliderController::class, 'sliderDelete']);
+    Route::get('/slider/{id}/edit', [SliderController::class, 'sliderEdit']);
+    Route::post('/sliderUpdate/{id}', [SliderController::class, 'sliderUpdate']);
 });
-
 
 // Route untuk Jemaat
 Route::group(['middleware' => ['auth', 'CheckRole:jemaat']], function () {

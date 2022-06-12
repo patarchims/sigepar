@@ -168,6 +168,14 @@
               </p>
             </a>
           </li>
+          <!-- <li class="nav-item active">
+            <a href="/slider" class="nav-link">
+                <i class="nav-icon far fa-image"></i>
+              <p>
+                Sliders
+              </p>
+            </a>
+          </li> -->
           <li class="nav-item active">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>

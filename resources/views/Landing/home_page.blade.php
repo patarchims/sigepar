@@ -3,7 +3,6 @@
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section class="d-flex flex-column justify-content-center align-items-center testimonials section-bg" style="margin-top:15px;">
-
         <div id="carouselExampleCaptions" class=" container carousel slide" data-bs-ride="carousel" >
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -423,78 +422,22 @@
                 <p>Huria Kristen Resort Parsoburan</p>
             </div>
 
-            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                            <h3>Saul Goodman</h3>
-                            <h4>Ceo &amp; Founder</h4>
-                        </div>
-                        
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                            <h3>Sara Wilsson</h3>
-                            <h4>Designer</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                            <h3>Jena Karlis</h3>
-                            <h4>Store Owner</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                            <h3>Pandita HKI</h3>
-                            <h4>Freelancer</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <p>
-                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                            </p>
-                            <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                            <h3>John Larson</h3>
-                            <h4>Entrepreneur</h4>
-                        </div>
-                    </div><!-- End testimonial item -->
-
+            <div class="row">
+                @foreach ($pengurus as $value)
+                  <div class="col-sm-4">
+                <div class="card" style="width: 18rem;">
+                <img src="{{asset('fileweb/' . $value->avatar)}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{$value->nama_pengurus}}</h5>
+                 
                 </div>
-                {{-- <div class="swiper-pagination"></div> --}}
+                </div>
+                  </div>
+                @endforeach
+
             </div>
+
+         
 
         </div>
     </section><!-- End Badan Pengurus Gereja     -->
@@ -556,99 +499,29 @@
 
             <div class="section-title">
                 <h2>Galery</h2>
-                <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit</p>
             </div>
 
 
 
             <div class="row portfolio-container">
-
+                  @foreach ($gallery as $value)
                 <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
                     <div class="portfolio-wrap">
                         <figure>
-                            <img src="{{asset('assets/img/gereja.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/gereja.jpg')}}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>
+                            <img src="{{asset('fileweb/' . $value->image_gallery)}}" class="img-fluid" alt="">
+                            <a href="{{asset('fileweb/' . $value->image_gallery)}}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>
                             <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
                         </figure>
 
-                        <div class="portfolio-info">
+                        <!-- <div class="portfolio-info">
                             <h4><a href="portfolio-details.html">Perayaan Ulang Tahun HKI</a></h4>
                             <p>Dalam rangka merayakan Ulang tahun HKI yang ke 19 maka ....</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('assets/img/dalamgereja.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/gereja2.jpg')}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Ibadah 5 Mei 2022</a></h4>
-                            <p>Jemaat HKI Parsoburan melaksanakan ibadah hari minggu di Gereja HKI Parsoburan</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('assets/img/dalamgereja.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/dalamgereja.jpg')}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Ibadah 5 Mei 2022</a></h4>
-                            <p>Jemaat HKI Parsoburan melaksanakan ibadah hari minggu di Gereja HKI Parsoburan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('assets/img/gereja.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/gereja.jpg')}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Ibadah 5 Mei 2022</a></h4>
-                            <p>Jemaat HKI Parsoburan melaksanakan ibadah hari minggu di Gereja HKI Parsoburan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('assets/img/gereja2.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/gereja2.jpg')}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Ibadah 5 Mei 2022</a></h4>
-                            <p>Jemaat HKI Parsoburan melaksanakan ibadah hari minggu di Gereja HKI Parsoburan</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('assets/img/dalamgereja.jpg')}}" class="img-fluid" alt="">
-                            <a href="{{asset('assets/img/dalamgereja.jpg')}}" class="link-preview portfolio-lightbox" data-gallery="portfolioGallery" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Ibadah 5 Mei 2022</a></h4>
-                            <p>Jemaat HKI Parsoburan melaksanakan ibadah hari minggu di Gereja HKI Parsoburan</p>
-                        </div>
-                    </div>
-                </div>
+             
 
             </div>
 

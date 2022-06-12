@@ -33,12 +33,12 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Table Data Pengurus HKI</h3> <br>
-                <a href="{{url('/TambahData_Jemaat')}}" class="btn btn-sm bg-success">
+                <a href="{{url('/DataPengurus_Gereja/tambah')}}" class="btn btn-sm bg-success">
                     <i class="fas fa-users fas-sm"></i> Tambah Data Pengurus
                   </a>
                
                 <div class="card-tools">
-                  <form action="/Data_Jemaat" method="GET">
+                  <form action="/DataPengurus_Gereja/create" method="GET">
                   <div class="input-group input-group-sm" style="width: 150px;" >                  
                     <input type="text" name="cari" class="form-control float-right" placeholder="Search" >
                     <div class="input-group-append">
@@ -71,6 +71,13 @@
                    
                   </thead>
                   <tbody>
+                    @if($data_jemaat == null) 
+                    <tr> 
+                      <td colspan="7">Tidak Ada data</td>
+                    </tr>
+                    @endif
+
+                    @if ($data_jemaat != null )
                     <tr>
                       @foreach ($data_jemaat as $jemaat)
                         <td>{{$loop->iteration}}</td>
@@ -80,13 +87,14 @@
                         <td>{{$jemaat->jabatan}}</td>
                         <td>{{$jemaat->tanggal_masuk}}</td>              
                         <td> 
-                            <a href="/DataJemaat/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
-                            <a href="/DataJemaat/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
-                             <a href="/Datajemaat/{{$jemaat->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Jemaat Ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="/dataPengurus/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="/dataPengurus/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
+                            <a href="/dataPengurus/{{$jemaat->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Jemaat Ini?')"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
 
                     </tr>
                     @endforeach
+                    @endif
                    
 
                   </tbody>

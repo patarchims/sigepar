@@ -31,10 +31,8 @@
               <div class="row">
                 <div class="col-sm-12">
                     {{-- form tambah data jemaat --}}
-                    <form action="/galleryCreate" method="POST" enctype="multipart/form-data">
-                        {{@csrf_field()}}
-
-          
+                    <form action="/albumCreate" method="POST" enctype="multipart/form-data">
+                        {{@csrf_field()}}          
 
 
                     <div class="form-group" {{$errors->has('nama_album')? 'hash-error':''}}>

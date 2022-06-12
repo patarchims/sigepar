@@ -2,25 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GalleryModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Pengurus_gereja;
 
 class PengurusGerejaController extends Controller
 {
     public function index(Request $request)
 
-    {
-      
-
-         if ($request->has('cari')) {
-            $data_jemaat = \App\Models\Pengurus_gereja::where('nama_pengurus', 'LIKE', '%' . $request->cari . '%')->get();
+    {     
+        if ($request->has('cari')) {
+            $data_jemaat = Pengurus_gereja::where('nama_pengurus', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
-            $data_jemaat = \App\Models\Pengurus_gereja::all();      
+            $data_jemaat = Pengurus_gereja::all();      
          }
-
-        $data_pengurus = \App\Models\User::where('role', '=', 'pengurus')->get();      
-     
-        return view('Admin.pengurus_gereja.index', ['users' => $data_pengurus], ['data_jemaat' => $data_jemaat]);
+        return view('Admin.pengurus_gereja.index',  ['data_jemaat' => $data_jemaat]);
     }
     public function tambah_pengurus()
     {
@@ -47,7 +44,7 @@ class PengurusGerejaController extends Controller
         $user->save();
         $request->request->add(['user_id' => $user->id]);
         // Insert ke table pengurus gereja
-        $pengurus = \App\Models\Pengurus_gereja::create($request->all());
+        $pengurus = Pengurus_gereja::create($request->all());
         if ($request->hasFile('avatar')) {
             $request->file('avatar')->move('fileweb/', $request->file('avatar')->getClientOriginalName());
             $pengurus->avatar = $request->file('avatar')->getClientOriginalName();
@@ -57,7 +54,7 @@ class PengurusGerejaController extends Controller
     }
     public function edit($id)
     {
-        $pengurus = \App\Models\Pengurus_gereja::find($id);
+        $pengurus = Pengurus_gereja::find($id);
         return view('Admin.pengurus_gereja.edit', ['pengurus' => $pengurus]);
     }
     public function update(Request $request, $id)
@@ -71,7 +68,7 @@ class PengurusGerejaController extends Controller
             'jabatan' => 'required',
             'avatar' => 'mimes:jpg,png',
         ]);
-        $pengurus = \App\Models\Pengurus_gereja::find($id);
+        $pengurus = Pengurus_gereja::find($id);
         $pengurus->update($request->all());
         if ($request->hasFile('avatar')) {
             $request->file('avatar')->move('fileweb/', $request->file('avatar')->getClientOriginalName());
@@ -80,4 +77,18 @@ class PengurusGerejaController extends Controller
         }
         return redirect('/DataPengurus_Gereja')->with('sukses', 'Data Pengurus ' . $pengurus->nama_pengurus . 'berhasil diubah');
     }
+
+    public function detail($id)
+    {
+        $pengurus = Pengurus_gereja::find($id);
+        return view('Admin.pengurus_gereja.detail', ['pengurus' => $pengurus]);
+    }
+
+    public function delete($id)
+    {
+        $jemaat = Pengurus_gereja::find($id);
+        $jemaat->delete($jemaat);    
+        return redirect('/DataPengurus_Gereja')->with('sukses', 'Data Pengurus ' .  $jemaat->nama_pengurus  .  'Berhasil Dihapus');
+    }
+
 }

@@ -88,4 +88,11 @@ class DataJemaatController extends Controller
         // }
         return view('Admin.Data_jemaat.jemaat', ['data_jemaat' => $data_jemaat]);
     }
+
+    public function jemaatDelete($id)
+    {
+        $jemaat = \App\Models\Jemaat::find($id);
+        $jemaat->delete($jemaat);
+        return redirect('/Data_Jemaat')->with('sukses', 'Data Jemaat Berhasil Dihapus');
+    }
 }

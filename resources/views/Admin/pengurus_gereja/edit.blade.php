@@ -68,11 +68,11 @@
                             @endif
                           </div>
                       </div>
-                      <div class="form-group" {{$errors->has('tanggal_masuk')? 'hash-error':''}}>
+                      <div class="form-group" {{$errors->has('$pengurus->tanggal_masuk')? 'hash-error':''}}>
                         <label for="tanggal_masuk"> Tanggal Masuk </label>
-                        <input type="date"  name="tanggal_masuk" class="form-control" id="tanggal_masuk" placeholder="Tanggal Masuk Sebagai Pengurus Gereja" value="{{old('tanggal_masuk',$pengurus->tanggal_masuk)}}">
-                        @if($errors->has('tanggal_masuk'))
-                        <span class="help-block">{{$errors->first('tanggal_masuk')}}</span>
+                        <input type="date"  name="tanggal_masuk" class="form-control" id="tanggal_masuk" placeholder="Tanggal Masuk Sebagai Pengurus Gereja" value="{{$pengurus->tanggal_masuk}}">
+                        @if($errors->has('$pengurus->tanggal_masuk'))
+                        <span class="help-block">{{$errors->first('$pengurus->tanggal_masuk')}}</span>
                         @endif
                       </div>
                       <div class="form-group" {{$errors->has('tanggal_penabalan')? 'hash-error':''}}>

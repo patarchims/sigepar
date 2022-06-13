@@ -2,47 +2,29 @@
 @section('title','SIGEPAR|Announcement')
 @section('content')
 
-
-<section class="d-flex flex-column justify-content-center align-items-center testimonials section-bg" style="margin-top:15px;">
-   <!-- ======= Galery Section ======= -->
-    <section id="portfolio" class="portfolio services section-bg">
-        <div class="container">
-
-    
-    <!-- ======= Galery Section ======= -->
-    <section id="portfolio" class="portfolio services section-bg">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Galery</h2>
+<section class="d-flex flex-column justify-content-center  align-items-center testimonials section-bg" style="margin-top:30px;">
+<div class="container">
+        <div class="section-title">
+                <h2>Announcement</h2>
             </div>
+        
+            <div class="row">
 
-
-
-            <div class="row portfolio-container">
-                  @foreach ($gallery as $value)
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-                    <div class="portfolio-wrap">
-                        <figure>
-                            <img src="{{asset('fileweb/' . $value->image_gallery)}}" class="img-fluid" alt="">
-                            <a href="{{asset('fileweb/' . $value->image_gallery)}}" data-gallery="portfolioGallery" class="link-preview portfolio-lightbox" title="Preview"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="link-details" title="More Details"><i class="bx bx-link"></i></a>
-                        </figure>
-
-                        <!-- <div class="portfolio-info">
-                            <h4><a href="portfolio-details.html">Perayaan Ulang Tahun HKI</a></h4>
-                            <p>Dalam rangka merayakan Ulang tahun HKI yang ke 19 maka ....</p>
-                        </div> -->
-                    </div>
-                </div>
-                @endforeach
-
-             
-
-            </div>
-
+@foreach ($pengumuman as $value)
+ <div class="col-sm-4">
+            <div class="card" style="width: 18rem; ">
+        <img src="{{asset('fileweb/' . $value->image)}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{$value->judul_pengumuman}}</h5>
+            <p class="card-text">{{$value->isi}}</p>
+            <a href="/announcement/{{$value->id}}/detail" class="btn btn-primary">Selengkapnya</a>
         </div>
-    </section><!-- End Galery Section -->
+        </div>
+        </div>
+@endforeach
+</div>
+</div>
 </section>
+
     
 @endsection

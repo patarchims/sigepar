@@ -46,11 +46,17 @@ class PengumumanController extends Controller
         ]);
 
         if ($validate) {
-          PengumumanModel::create([
+         $pengurus =  PengumumanModel::create([
                 'tanggal' => $request->tanggal,
                 'judul_pengumuman' => $request->judul_pengumuman,
                 'isi' => $request->isi,                
             ]);
+        }
+
+         if ($request->hasFile('image')) {
+            $request->file('image')->move('fileweb/', $request->file('image')->getClientOriginalName());
+            $pengurus->image = $request->file('image')->getClientOriginalName();
+            $pengurus->save();
         }
 
         return redirect('/pengumuman')->with('succes', 'Data Berhasil Ditambahkan');
@@ -70,9 +76,16 @@ class PengumumanController extends Controller
             'judul_pengumuman' => 'required',
             'isi' => 'required',     
         ]);
-        $jemaat = PengumumanModel::find($id);
-        $jemaat->update($request->all());
-      
+
+
+        $pengurus = PengumumanModel::find($id);
+        $pengurus->update($request->all());
+        if ($request->hasFile('image')) {
+            $request->file('image')->move('fileweb/', $request->file('image')->getClientOriginalName());
+            $pengurus->image = $request->file('image')->getClientOriginalName();
+            $pengurus->save();
+        }
+
           return redirect('/pengumuman')->with('succes', 'Data Berhasil Diubah');
     }
 

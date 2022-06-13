@@ -29,14 +29,14 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>3</h3>
+                <h3>{{$data['jumlah_jemaat']}}</h3>
   
-                  <p>Curh Data</p>
+                  <p>Jemaat</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon fas fa-solid fa-church"></i>
                 </div>
-                <a href="/Data_Jemaat" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/Data_Jemaat" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -44,14 +44,14 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3>{{$data['jumlah_pengumuman']}}<sup style="font-size: 20px"></sup></h3>
   
                   <p>Announcement</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon fas fa-copy"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/pengumuman" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -59,14 +59,14 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3>{{$data['jlh_worship']}}</h3>
   
                   <p>Worship Procedure</p>
                 </div>
                 <div class="icon">
                     <i class='fas fa-praying-hands'></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/worshipProcedure" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -74,14 +74,14 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
+                  <h3>{{$data['jlh_gallery']}}</h3>
   
                   <p>Galery</p>
                 </div>
                 <div class="icon">
                     <i class="nav-icon far fa-image"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/gallery" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

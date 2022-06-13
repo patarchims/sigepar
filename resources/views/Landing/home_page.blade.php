@@ -51,8 +51,7 @@
 <section id="services" class="services section-bg">
     <div class="container">
         <div class="section-title">
-            <h2>Services</h2>
-            <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+            <h2>Worship Procedures</h2>
         </div>
 
         <div class="row">
@@ -66,28 +65,28 @@
                             <table class="table" border="1" style="height:100px;" >
                                 <thead>
                                   <tr align="center">
-                                    <td colspan="2"">Minggu Kantante</td>
+                                    <td colspan="2"">{{$worship->judul}}</td>
                                   </tr>
                                 </thead>
                                 <tbody >
                                   <tr align="center">
                                     <td>
                                         <text>
-                                            <b>Minggu</b>
+                                            <b>{{$worship->hari}}</b>
                                         </text>
                                     </td>
                                   </tr>
                                   <tr align="center">
                                       <td>
                                         <text>
-                                            <b>15 Mei 2022 </b>
+                                            <b>{{$worship->tanggal}} </b>
                                         </text>
                                       </td>
                                   </tr>
                                   <tr align="center">
                                     <td colspan="2">
                                       <b>Tema</b><br>
-                                      <span>bernyanyilah Bagi Tuhan/Marende Mahamu di Debata</span>
+                                      <span>{{$worship->tema}}</span>
                                     </td>
                                   </tr>
                                   
@@ -96,192 +95,23 @@
                         </div>
                         <div class="col-md-8 mt-4 mt-md-0">
                             <ol>
-                                <p>
-                                  <td colspan="3" align="center"><text style="font-size:25px; color:544531"></text></td>
-                                <p>
-                                <li>
-                                  <td ><text><b>Epistel
-                                      </b></text></td>
-                                  <td align="center" width="10px"><text>:</text></td>
-                                  <td><text>Mazmur 12:1-4</text></td>
-                                </li>
-                                <li>
-                                  <td ><text><b>Evangelium</b></text></td>
-                                  <td align="center" width="10px"><text>:</text></td>
-                                  <td><text>Matius 1:2-3 & 6 </text></td>
-                                </li>
-                                
-                                <p style="margin-left: 0px;">
-                                  <td ><text><b>Ende&nbsp;&nbsp;:</b></text></td>
-                                <p>
+                                @foreach ($procedure as $value)
                                   <li>
                                    <td>
                                     <div class="btn-group dropend">
                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span>Buku Ende</span>10:1-2
+                                            <span>{{$value->judul_procedure}}</span>
                                         </button>
                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
                                             <text>
-                                                <b>upuji Hupasangap Ho</b>
-                                            1.Hupuji hupasangap Ho Amang pardenggan basa
-                                            Ai jadijadianMu do sude angka na masa
-                                            Ditompa Ho do sasude Dagingku rodi tondi pe
-                                            Pinuji ma goarMu
-                                            <br>
-                                            2.
-                                            Saluhut na tinompaMi Naeng sonang di rohaMu
-                                            Arian dohot borngin pe Disarihon rohaMu
-                                            Nang uhum di gomgomanMi Na tigor na sintong do i
-                                            Pinuji ma goarMu
+                                             {{$value->isi}}
                                             </text>
                                         </ul>
                                       </div>
                                    </td>
                                   </li>
-                                  <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>upuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
-                                   <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>upuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
-                                   <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>upuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
-                                   <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2<small style="font-style: italic;">(Persembahan1-2)</small>
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>Hupuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
-                                   <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>Hupuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
-                                   <li>
-                                    <td>
-                                     <div class="btn-group dropend">
-                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                             <span>Buku Ende</span>10:1-2 <small style="font-style: italic;">(Persembahan 3)</small>
-                                         </button>
-                                         <ul class="dropdown-menu" style="width:200px;background-color:ivory" background-color>
-                                             <text>
-                                                 <b>Hupuji Hupasangap Ho</b>
-                                             1.Hupuji hupasangap Ho Amang pardenggan basa
-                                             Ai jadijadianMu do sude angka na masa
-                                             Ditompa Ho do sasude Dagingku rodi tondi pe
-                                             Pinuji ma goarMu
-                                             <br>
-                                             2.
-                                             Saluhut na tinompaMi Naeng sonang di rohaMu
-                                             Arian dohot borngin pe Disarihon rohaMu
-                                             Nang uhum di gomgomanMi Na tigor na sintong do i
-                                             Pinuji ma goarMu
-                                             </text>
-                                         </ul>
-                                       </div>
-                                    </td>
-                                   </li>
+                                  @endforeach
+                                  
                                   
                                 </ol>
                         </div>
@@ -294,7 +124,7 @@
                     <i class="bi bi-card-checklist card"></i>
                     <h4>Statistik Keuangan</h4>
                           <div class="card-header">
-                            <span "><small><b>Data Pemasukan Gereja Minggu 12-Mei-2022</b></small></span>    
+                            <!-- <span><small><b>Data Pemasukan Gereja Minggu 12-Mei-2022</b></small></span>     -->
                           </div>
                           <!-- /.card-header -->
                           <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -302,61 +132,26 @@
                               <thead>
                                 <tr>
                                   <th>Nomor</th>
-                                  <th>Tanggal</th>
                                   <th>Nama</th>
+                                  <th>Tanggal</th>
                                   <th>Jumlah</th>
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach ($keuangan as $key)
                                 <tr>
-                                  <td>183</td>
-                                  <td>John Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
+                                  <td> {{$loop->iteration}}</td>
+                                  <td>{{$key->nama}}</td>
+                                  <td>{{$key->tanggal}}</td>
+                                  <td><span ><small><b>Rp. </b></small>{{$key->jumlah}}</span></td>
                                 </tr>
-                                <tr>
-                                  <td>219</td>
-                                  <td>Alexander Pierce</td>
-                                  <td>11-7-2014</td>
-                                  <td><span> <small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                  <td>657</td>
-                                  <td>Bob Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                  <td>175</td>
-                                  <td>Mike Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                  <td>134</td>
-                                  <td>Jim Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                  <td>494</td>
-                                  <td>Victoria Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                  <td>832</td>
-                                  <td>Michael Doe</td>
-                                  <td>11-7-2014</td>
-                                  <td><span ><small><b>Rp.</b></small>200.000,00</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td><small><b>Rp.</b></small>8.200.000,00</span></td>
-                                    <td ></td>
-                                    <td></td>
-                                </tr>
+                                @endforeach                               
                               </tbody>
+                                <tr>
+                                <td colspan="4"  > <h3> Jumlah : Rp. {{$jlh_keuangan}} </h3>
+
+                                </td>
+                                </tr>
                               
                             </table>
                           </div>

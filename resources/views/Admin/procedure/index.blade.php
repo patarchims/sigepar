@@ -1,6 +1,6 @@
 @extends('Layout.Admin')
 @section('content')
-@section('title','SIGEPAR  | Data Pengumuman')
+@section('title','SIGEPAR  | Data Jemaat')
 
 
 
@@ -12,13 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Pengumuman</h1>
+            <h1>Data Procedure</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item "><a href="Dashboard">Dashboard</a></li>
-              <li class="breadcrumb-item ">Curch Data</li>
-              <li class="breadcrumb-item active"><a href="Dashboard">Data Pengumuman</a></li>
+              <li class="breadcrumb-item active"><a href="Dashboard">Data Procedure</a></li>
             </ol>
           </div>
         </div>
@@ -32,13 +31,12 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Table Data Pengumuman HKI</h3> <br>
-                <a href="{{url('/tambahPengumuman')}}" class="btn btn-sm bg-success">
-                    <i class="fas fa-users fas-sm"></i> Tambah Data Pengumuman
+                <a href="{{url('/procedure/tambah/' . $id)}}" class="btn btn-sm bg-success">
+                    <i class="fas fa-users fas-sm"></i> Tambah Data Procedure
                   </a>
                
                 <div class="card-tools">
-                  <form action="/pengumuman" method="GET">
+                  <form action="/procedure/{{$id}}/index" method="GET">
                   <div class="input-group input-group-sm" style="width: 150px;" >                  
                     <input type="text" name="cari" class="form-control float-right" placeholder="Search" >
                     <div class="input-group-append">
@@ -52,42 +50,58 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 500px;">
-                @if(session('success'))
-                <div class="alert alert-success" role="alert">
-                    {{session('success')}}
+       
+              
+                      @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                @endif
+              @endif
+
+                  @if(session('success'))
+                  <div class="alert alert-success" role="alert">
+                      {{session('success')}}
+                  </div>
+                  @endif
+
                 <table class="table table-head-fixed text-nowrap">
                   <thead text='center'>
                     <tr >
                       <th>No</th>
-                      <th>Tanggal </th>
-                      <th>Gambar</th>
-                      <th>Judul Pengumuman</th>
-                      <th>ISI</th>
+                      <th>Tema </th>
+                      <th>Judul </th>
+                      <th>Isi </th>
                       <th>Action</th>
                     </tr>
                    
                   </thead>
                   <tbody>
+                    @if($data == null) 
+                    <tr> 
+                      <td colspan="5" rowspan="5">Tidak Ada data</td>
+                    </tr>
+                    @endif
+
+                    @if ($data != null )
                     <tr>
-                      @foreach ($data_jemaat as $jemaat)
+                      @foreach ($data as $jemaat)
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$jemaat->tanggal}}</td>
-                        <td>
-                            <div class="text-center">
-                             <img height="50" width="50" src="{{asset('fileweb/' . $jemaat->image)}}" class="rounded" alt="...">
-                          </div>
-                        </td>
-                        <td>{{$jemaat->judul_pengumuman}}</td>
-                        <td>{{$jemaat->isi}}</td>
+                        <td>{{$jemaat->worship->tema}}</td>
+                        <td>{{$jemaat->judul_procedure}}</td>
+                        <td>{{  Str::words($jemaat->isi, 5, ' ...')}}</td>                                
                         <td> 
-                            <a href="/pengumuman/{{$jemaat->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
-                            <a href="/pengumuman/{{$jemaat->id}}/detail" class="btn btn-success btn-sm"><i class="nav-icon fas fa-book"></i></a>
-                             <a href="/pengumuman/delete/{{$jemaat->id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Pengumuman Ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="/procedure/{{$jemaat->id}}/edit/{{$id}}" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>
+                      
+                            <a href="/procedure/{{$jemaat->id}}/delete/{{$id}}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Jemaat Ini?')"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
+
                     </tr>
                     @endforeach
+                    @endif
                    
 
                   </tbody>

@@ -62,7 +62,6 @@
                     <tr >
                       <th>No</th>
                       <th>Tanggal </th>
-                      <th>Gambar</th>
                       <th>Judul Pengumuman</th>
                       <th>ISI</th>
                       <th>Action</th>
@@ -74,11 +73,6 @@
                       @foreach ($data_jemaat as $jemaat)
                         <td>{{$loop->iteration}}</td>
                         <td>{{$jemaat->tanggal}}</td>
-                        <td>
-                            <div class="text-center">
-                             <img height="50" width="50" src="{{asset('fileweb/' . $jemaat->image)}}" class="rounded" alt="...">
-                          </div>
-                        </td>
                         <td>{{$jemaat->judul_pengumuman}}</td>
                         <td>{{$jemaat->isi}}</td>
                         <td> 

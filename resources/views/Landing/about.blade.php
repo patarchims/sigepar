@@ -15,11 +15,7 @@
                 <div class="col-lg-6 pt-4 pt-lg-0">
                     <h3>Sejarah Gereja</h3>
                     <p>
-                        Huria Kristen Indonesia (HKI) yaitu lahir, tumbuh, dan hidup dari dan oleh Firman Allah, dan menjadi
-                        perwujudan persekutuan orang yang percaya kepada Allah Bapa, Anak-Nya Tuhan Yesus Kristus, dan Roh Kudus,
-                        Allah yang Maha Esa. HKI merupakan bagian dari Gereja yang Kudus dan Am, yang terpanggil dan terpilih serta diutus
-                        oleh Tuhan Yesus Kristus untuk penyataan tubuh-Nya di dunia ini. HKI merupakan perwujudan dan pertumbuhan dari hadirnya
-                        Injil di tanah Batak yang disampaikan oleh penginjil yang diutus oleh Badan Zending RMG (Rheinische Mission Gesellschaft) dari negeri Jerman.
+                        {{$data->sejarah}}
                     </p>
                     <div class="row icon-boxes">
                         <div class="col-md-6">

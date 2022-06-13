@@ -11,7 +11,7 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">Table Data Keuangan Jemaat HKI</h3> <br>
-                  <a href="{{url('/TambahData_Jemaat')}}" class="btn btn-sm bg-success">
+                  <a href="{{url('/keuanganTambah')}}" class="btn btn-sm bg-success">
                       <i class="fas fa-users fas-sm"></i> Tambah Data Keuangan
                     </a>
                  
@@ -32,9 +32,9 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0" style="height: 500px;">
-                  @if(session('sukses'))
+                  @if(session('success'))
                   <div class="alert alert-success" role="alert">
-                      {{session('sukses')}}
+                      {{session('success')}}
                   </div>
                   @endif
                   <table class="table table-head-fixed text-nowrap">
@@ -42,21 +42,27 @@
                       <tr >
                         <th>No</th>
                         <th>Nama </th>
-                        <th>Jumlah Pemberian</th>
-                        <th>Tanggal pemberian</th>
+                        <th>Tanggal</th>
+                        <th>Jumlah</th>
                         <th>Keterangan</th>
                         <th>Action</th>
                       </tr>
                      
                     </thead>
                     <tbody>
+                       @foreach ($data as $value)
                       <tr>
-                        <td>1</td>
-                        <td>Sayoni</td>
-                        <td>Rp.100.000</td>
-                        <td>11/12/2020</td>
-                        <td>Dibagi ke Huria Rp.50.000; Pendeta Rp.50.000</td>
+                        <td>    {{$loop->iteration}}</td>
+                        <td>    {{$value->nama}}</td>
+                        <td>    {{$value->tanggal}}</td>
+                        <td>    {{$value->jumlah}}</td>
+                        <td>    {{$value->keterangan}}</td>
+                           <td> 
+                            <a href="/keuangan/{{$value->id}}/edit" class="btn btn-warning btn-sm"><i class="fa-solid fa-user-pen"></i></a>                     
+                             <a href="/keuangan/{{$value->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda Akan Menghapus Data Gallery Ini?')"><i class="fa-solid fa-trash-can"></i></a>
+                        </td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

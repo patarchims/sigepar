@@ -30,7 +30,7 @@
               <!-- Minimal style -->
               <div class="row">
                 <div class="col-sm-12">
-                  
+                    {{-- form tambah data jemaat --}}
                     <form action="/updatePengumuman/{{$data->id}}/edit" method="POST" enctype="multipart/form-data">
                         {{@csrf_field()}}
 
@@ -42,30 +42,6 @@
                         @endif
                       </div>
 
-                       <div class="card card-primary card-outline" {{$errors->has('image')? 'hash-error':''}}>
-                        <div class="card-body box-profile ">
-                        <div class="text-center mb-5">
-                            <img class="profile-user-img img-fluid img-circle" name="image" src="{{asset('fileweb/' . $data->image)}}" alt="image">
-                        </div>
-        
-        
-        
-                        <ul class="list-group list-group-unbordered mb-3">
-                            <li class="list-group-item">
-                            <b>Gambar</b>
-                        <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="customFile">
-                        @if($errors->has('image'))
-                        <span class="help-block">{{$errors->first('image')}}</span>
-                        @endif
-                               <label class="custom-file-label" for="customFile">Choose file</label>
-                         </div></a>
-                           </li>
-                      </ul>
-                        
-                     </div>
-                        <!-- /.card-body -->
-                 </div>
 
                     <div class="form-group" {{$errors->has('judul_pengumuman')? 'hash-error':''}}>
                         <label for="exampleInputEmail1">Judul</label>
@@ -73,7 +49,7 @@
                         @if($errors->has('judul_pengumuman'))
                         <span class="help-block">{{$errors->first('judul_pengumuman')}}</span>
                         @endif
-                    </div>
+                      </div>
 
                       <div class="form-group" >
                         <label for="quotes">Isi</label>

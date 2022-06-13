@@ -9,8 +9,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{asset('assets/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        <div class="image"> 
+          <img src="{{asset('fileweb/' . Auth::user()->avatar)}}" class="img-circle elevation-2" alt="User Image">
         </div>
          @if(auth()->user()->role =='admin')
         <div class="info">
@@ -145,7 +145,7 @@
           @endif
           @if(auth()->user()->role =='admin')
           <li class="nav-item active">
-            <a href="#" class="nav-link">
+            <a href="/worshipProcedure" class="nav-link">
                 <i class='fas fa-praying-hands'></i>
               <p>
                 Worship Procedure 
@@ -177,7 +177,7 @@
             </a>
           </li> -->
           <li class="nav-item active">
-            <a href="#" class="nav-link">
+            <a href="/aboutus" class="nav-link">
                 <i class="nav-icon fas fa-copy"></i>
               <p>
                 About

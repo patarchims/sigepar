@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,8 @@ use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PengurusGerejaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\WorshipController;
+use App\Http\Controllers\ProcedureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +39,7 @@ Route::get('/', [LandingpagesController::class, 'index'])->name('login');
 Route::get('/Curch Data', [LandingpagesController::class, 'v_curchdata']);
 Route::get('/Worship Procedures', [LandingpagesController::class, 'v_worship']);
 Route::get('/Announcement', [LandingpagesController::class, 'v_announcement']);
+Route::get('/announcement/{id}/detail', [LandingpagesController::class, 'v_announcementDetail']);
 Route::get('/About', [LandingpagesController::class, 'v_about']);
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
 Route::get('/logout', [AuthController::class, 'logout']);
@@ -73,6 +77,11 @@ Route::post('/peneguhanSidiCreate', [JemaatController::class, 'peneguhanSidiCrea
     Route::group(['middleware' => ['auth', 'CheckRole:admin,pengurus']], function () {
     Route::get('/Dashboard_pengurus', [PengurusController::class, 'index']);
     Route::get('/Data_Keuangan', [DataKeuanganController::class, 'index']);
+    Route::get('/keuanganTambah', [DataKeuanganController::class, 'keuanganTambah']);
+    Route::post('/keuanganCreate', [DataKeuanganController::class, 'keuanganCreate']);
+    Route::get('/keuangan/{id}/delete', [DataKeuanganController::class, 'keuanganDelete']);
+    Route::get('/keuangan/{id}/edit', [DataKeuanganController::class, 'keuanganEdit']);
+    Route::post('/keuangan/{id}/update', [DataKeuanganController::class, 'keuanganUpdate']);
     Route::get('/Sakramen_Baptis', [DataSakramenController::class, 'index']);
     Route::get('/Sakramen_Baptis/detail/{id}', [DataSakramenController::class, 'detialBabtis']);
     Route::get('/Peneguhan_Sidi', [DataSakramenController::class, 'peneguhan_sidi']);
@@ -125,8 +134,21 @@ Route::post('/peneguhanSidiCreate', [JemaatController::class, 'peneguhanSidiCrea
     Route::get('/slider/{id}/delete', [SliderController::class, 'sliderDelete']);
     Route::get('/slider/{id}/edit', [SliderController::class, 'sliderEdit']);
     Route::post('/sliderUpdate/{id}', [SliderController::class, 'sliderUpdate']);
+    Route::get('/aboutus', [AboutController::class, 'index']);
+    Route::post('/updateAbout', [AboutController::class, 'update']);
+    Route::get('/worshipProcedure', [WorshipController::class, 'index']);
+    Route::get('/worship/tambah', [WorshipController::class, 'worshipTambah']);
+    Route::post('/worshipCreate', [WorshipController::class, 'worshipCreate']);
+    Route::get('/worship/{id}/delete', [WorshipController::class, 'wordshipDelete']);
+    Route::get('/worship/{id}/edit', [WorshipController::class, 'wordshipEdit']);
+    Route::post('/worshipEdit/{id}', [WorshipController::class, 'wordshipUpdate']);
+    Route::get('/procedure/{id}/index', [ProcedureController::class, 'index']);
+    Route::get('/procedure/tambah/{id}', [ProcedureController::class, 'procedureTambah']);
+    Route::post('/procedure/create/{id}', [ProcedureController::class, 'procedureCreate']);
+    Route::get('/procedure/{id}/delete/{idPro}', [ProcedureController::class, 'procedureDelete']);
+    Route::get('/procedure/{id}/edit/{idPro}', [ProcedureController::class, 'procedureEdit']);
+    Route::post('/procedure/{id}/update/{idPro}', [ProcedureController::class, 'procedureUpdate']);
 });
-
 // Route untuk Jemaat
 Route::group(['middleware' => ['auth', 'CheckRole:jemaat']], function () {
     Route::get('/Dashboard_jemaat', [JemaatController::class, 'index']);

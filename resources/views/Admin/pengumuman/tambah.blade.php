@@ -42,6 +42,24 @@
                         @endif
                       </div>
 
+             
+        
+        
+                        <ul class="list-group list-group-unbordered mb-3">
+                            <li class="list-group-item">
+                            <b>Gambar</b>
+                        <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="customFile">
+                        @if($errors->has('image'))
+                        <span class="help-block">{{$errors->first('image')}}</span>
+                        @endif
+                               <label class="custom-file-label" for="customFile">Choose file</label>
+                         </div></a>
+                           </li>
+                      </ul>
+                        
+                        <!-- /.card-body -->
+
 
                     <div class="form-group" {{$errors->has('judul_pengumuman')? 'hash-error':''}}>
                         <label for="exampleInputEmail1">Judul</label>

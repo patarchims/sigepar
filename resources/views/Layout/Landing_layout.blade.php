@@ -49,8 +49,8 @@
 
             <div class="logo me-auto">
                 <h4>
-                    <img src="assets/img/Logo_HKI.jpg" alt="">
-                    <a href="index.html">HKI Parsoburan</a>
+                    <img src="{{asset('fileweb/' . $data->logo)}}" alt="">
+                    <a href="/">{{$data->nama}}</a>
                 </h4>
                 <div class="header-social-links d-flex align-items-center">
                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>

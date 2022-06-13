@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 12 Jun 2022 pada 14.49
+-- Waktu pembuatan: 13 Jun 2022 pada 08.15
 -- Versi server: 5.7.33
 -- Versi PHP: 8.1.3
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `sigepar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `about`
+--
+
+CREATE TABLE `about` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sejarah` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `about`
+--
+
+INSERT INTO `about` (`id`, `nama`, `logo`, `sejarah`, `created_at`, `updated_at`) VALUES
+(1, 'HKI Parsoburan', 'logo.jpg', 'Huria Kristen Indonesia (HKI) yaitu lahir, tumbuh, dan hidup dari dan oleh Firman Allah, dan menjadi perwujudan persekutuan orang yang percaya kepada Allah Bapa, Anak-Nya Tuhan Yesus Kristus, dan Roh Kudus, Allah yang Maha Esa. HKI merupakan bagian dari Gereja yang Kudus dan Am, yang terpanggil dan terpilih serta diutus oleh Tuhan Yesus Kristus untuk penyataan tubuh-Nya di dunia ini. HKI merupakan perwujudan dan pertumbuhan dari hadirnya Injil di tanah Batak yang disampaikan oleh penginjil yang diutus oleh Badan Zending RMG (Rheinische Mission Gesellschaft) dari negeri Jerman.', NULL, '2022-06-12 10:32:08');
 
 -- --------------------------------------------------------
 
@@ -97,8 +119,7 @@ INSERT INTO `data_jemaat` (`id`, `nama_lengkap`, `jenis_kelamin`, `keluarga`, `a
 (3, 'Alex Pernandes Siburian', 'Laki-laki', 'Alex Sirait', 'Balige', '081234567890', '2022-05-25', '2022-05-18', 'Aktif', 'aleximage.png', '2022-05-23 06:18:55', '2022-05-24 16:12:50'),
 (4, 'Juliana Simanjuntak', 'Perempuan', 'A.Juliana', 'Komplek HKI Parsoburan', '08123456789', '2022-05-24', '2022-05-25', 'Aktif', 'background1.png', '2022-05-24 07:08:37', '2022-05-24 16:13:41'),
 (5, 'Sayoni Simanjuntak', 'Perempuan', 'Keluarga SI', 'Alamat', '081234567890', '2022-05-02', '2022-05-26', 'Aktif', 'logo_stikes.png', '2022-05-24 09:18:49', '2022-06-08 16:07:09'),
-(6, 'Jaime Sirait', 'Laki-laki', 'Keluarga SI', 'Komplek PLN', '08123456789', '2022-05-25', '2022-05-18', 'Aktif', 'IMG_20200820_133145.jpg', '2022-05-24 09:19:49', '2022-06-07 16:03:39'),
-(7, 'Santinasian', 'Laki-laki', 'Bpk Harahap', 'Alamat', '08111321562', '2022-06-08', '2022-06-09', 'Aktif', NULL, '2022-06-11 21:41:01', '2022-06-12 04:41:01');
+(6, 'Jaime Sirait', 'Laki-laki', 'Keluarga SI', 'Komplek PLN', '08123456789', '2022-05-25', '2022-05-18', 'Aktif', 'IMG_20200820_133145.jpg', '2022-05-24 09:19:49', '2022-06-07 16:03:39');
 
 -- --------------------------------------------------------
 
@@ -115,6 +136,13 @@ CREATE TABLE `data_keuangan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `data_keuangan`
+--
+
+INSERT INTO `data_keuangan` (`id`, `nama`, `tanggal`, `jumlah`, `keterangan`, `created_at`, `updated_at`) VALUES
+(2, 'Ida Sinulingga', '2022-06-08', 49999, 'Lunas', '2022-06-12 19:26:06', '2022-06-12 19:35:53');
 
 -- --------------------------------------------------------
 
@@ -256,7 +284,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2022_06_11_030826_create_album_gallery', 7),
 (15, '2022_06_11_030958_create_gallery', 8),
 (16, '2022_06_11_045501_create_pengumuman', 9),
-(17, '2022_06_12_122258_create_slider', 10);
+(17, '2022_06_12_122258_create_slider', 10),
+(18, '2022_06_12_170433_create_about', 11),
+(19, '2022_06_13_025149_create_worship', 12),
+(20, '2022_06_13_025512_create_procedure_table', 12);
 
 -- --------------------------------------------------------
 
@@ -296,6 +327,7 @@ CREATE TABLE `pendaftaran_sakramens` (
 CREATE TABLE `pengumuman` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `tanggal` date DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `judul_pengumuman` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -306,8 +338,10 @@ CREATE TABLE `pengumuman` (
 -- Dumping data untuk tabel `pengumuman`
 --
 
-INSERT INTO `pengumuman` (`id`, `tanggal`, `judul_pengumuman`, `isi`, `created_at`, `updated_at`) VALUES
-(2, '2022-05-31', 'Hari Paskah', 'ISi Disini', '2022-06-11 21:36:37', '2022-06-11 21:36:37');
+INSERT INTO `pengumuman` (`id`, `tanggal`, `image`, `judul_pengumuman`, `isi`, `created_at`, `updated_at`) VALUES
+(2, '2022-05-31', 'gereja.jpg', 'Hari Paskah', 'ISi Disini', '2022-06-11 21:36:37', '2022-06-12 23:39:05'),
+(3, '2022-06-07', 'gereja.jpg', 'Pengumuman Satu', 'sfsfsfs', '2022-06-12 23:45:59', '2022-06-12 23:46:12'),
+(5, '2022-06-08', 'gereja.jpg', 'Pengumuman Dua', 'Ini adalah pengumuman', '2022-06-13 00:05:26', '2022-06-13 00:05:26');
 
 -- --------------------------------------------------------
 
@@ -356,6 +390,29 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `procedure`
+--
+
+CREATE TABLE `procedure` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_worship` int(11) DEFAULT NULL,
+  `judul_procedure` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `isi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `procedure`
+--
+
+INSERT INTO `procedure` (`id`, `id_worship`, `judul_procedure`, `isi`, `created_at`, `updated_at`) VALUES
+(2, 2, 'Buku Ende 10:1-2', 'Puji Hupasangap Ho 1.Hupuji hupasangap Ho Amang pardenggan basa Ai jadijadianMu do sude angka na masa Ditompa Ho do sasude Dagingku rodi tondi pe Pinuji ma goarMu\r\n2. Saluhut na tinompaMi Naeng sonang di rohaMu Arian dohot borngin pe Disarihon rohaMu Nang uhum di gomgomanMi Na tigor na sintong do i Pinuji ma goarMu', '2022-06-12 22:11:11', '2022-06-12 22:31:05'),
+(3, 2, 'Buku Ende 10:1-3', 'Puji Hupasangap Ho 1.Hupuji hupasangap Ho Amang pardenggan basa Ai jadijadianMu do sude angka na masa Ditompa Ho do sasude Dagingku rodi tondi pe Pinuji ma goarMu\r\n2. Saluhut na tinompaMi Naeng sonang di rohaMu Arian dohot borngin pe Disarihon rohaMu Nang uhum di gomgomanMi Na tigor na sintong do i Pinuji ma goarMu', '2022-06-12 22:52:26', '2022-06-12 22:52:26');
 
 -- --------------------------------------------------------
 
@@ -409,14 +466,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role`, `nama`, `username`, `password`, `remember_token`, `created_at`, `updated_at`, `jenis_kelamin`, `keluarga`, `alamat`, `no_hp`, `status`, `avatar`, `tgl_lahir`, `tgl_bergabung`) VALUES
-(1, 'admin', 'Juliana IP Sibuea Sth', 'Juliana01', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'BRYPtG5iRUi8BjtuAxPwT5oZJsFDZg4FZ2Un2zVW6ozamgQLRPn1YzwxfnI8', '2022-05-22 09:19:27', '2022-05-22 16:19:27', '', 'Keluarga Bapak/Harahap', '', '', '', '', '2022-06-09', '2022-06-09'),
+(1, 'admin', 'Juliana IP Sibuea Sth', 'Juliana01', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'cd0ot4FtjWYQnbLwC9xHnxTkr7EEapv9uj4OoHtiTv56JgYGNWOe1xKzmjOs', '2022-05-22 09:19:27', '2022-05-22 16:19:27', '', 'Keluarga Bapak/Harahap', '', '', '', 'man_avatar.png', '2022-06-09', '2022-06-09'),
 (2, 'Pendeta', 'Juliana Simorangkir', 'pengurusHKI', '$2y$10$BBGccHKnxdU4xVDy4JNzaOjZf.rs3Qr/sSj7wn/Kh4WPlGZfQGaxC', 'CdXvcRBm1jSxnZdR4EhpfLntz02adKdJ9KJnYPYhQLnQ6yLkRQBYXL9egLyC', '2022-05-25 08:17:39', '2022-05-25 15:17:39', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
 (3, 'Pendeta', 'Juliana Simorangkir', 'pengurusHKI', '$2y$10$5wlPgDGN7N9Mi9y2vfBDuOj/ItlV2p9dKaeewE90N13tvO48j7q/q', 'D20YpPfikFORmD9NSN449gfOGXU0TnVYgncN4Q1b8bRdHIqXKfty4SLfsyri', '2022-05-25 09:43:33', '2022-05-25 16:43:33', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
 (4, 'Sintua', 'Julian Simorangkir', 'pengurusHKI', '$2y$10$KmDFkEDHx8V5Y2andWhD.ekRVZz/FmmY0IYXAZ83bL5YHh9ZaI4Lu', 'vN94jwvdwMrclNE1rADbdjcrfzU3DDycwXXONCW38JHUwEtbS433Tb5GL8xD', '2022-05-25 09:47:04', '2022-05-25 16:47:04', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
 (5, 'Sintua', 'Julian Simorangkir', 'pengurusHKI', '$2y$10$PiSefvYVTvjQAdsfD7xNvuhOj/IPozh9CsrC5ASI4AFc00RUMdlWy', 'RZNERK7k94iDnuzaUoUxiJ9QZGtA32dPLdj7DsKP9A6Dq1m0fjrhW37LKVKb', '2022-05-25 09:47:55', '2022-05-25 16:47:55', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
 (6, 'Pendeta', 'Pengurus Satu', 'pengurusHKI', '$2y$10$0dDK3VbjVyvhu/bBZjAmeOSTlJcyYIsVCr4nnrebpcNLVMdw18TKq', 'NU8BEc3iitBALYE5H2ISdCYJ4ubkVHsTr51KnzM1aTvF54W9XEsMZR0Xu58A', '2022-06-07 19:25:05', '2022-06-08 02:25:05', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
-(7, 'jemaat', 'Simpan', 'jemaat1', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'kc85OfWeaXuew5xpbpEZ0JtKsffsShfjWb4htr8UMs0D6HPBc2bWD2Z4mPoN', '2022-05-22 09:19:27', '2022-05-22 16:19:27', 'Perempuan', 'Kel. Bapak SimSan/Ibu Juliana', 'Jalan Dame Dame Ma Di Hita', '081213131', 'Aktif', '', '2022-06-09', '2022-06-09'),
-(8, 'pengurus', 'Juliana Pengurus', 'pengurus1', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'BHsSgpHlAWnHTafM8O093pkAZuEGfbt7DUEvyOjWY25OBg8VW3HThbkzpEfw', '2022-05-22 09:19:27', '2022-05-22 16:19:27', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
+(7, 'jemaat', 'Simpan', 'jemaat1', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'P4suF8FbY57JAXCFqlfRNglzD1OGV8PVzufcreQFCOTibThXtCwITYeZTdsA', '2022-05-22 09:19:27', '2022-06-13 08:04:48', 'Perempuan', 'Kel. Bapak SimSan/Ibu Juliana', 'Jalan Dame Dame Ma Di Hita', '081213131', 'Aktif', 'man_avatar.png', '2022-06-09', '2022-06-09'),
+(8, 'pengurus', 'Juliana Pengurus', 'pengurus1', '$2y$10$YgHk5qA6V3tZ6u75g2x4Y.QdjsMPxWg8.LYFc0zPLt0IL8bELAe1u', 'DLrMEMCC9pa0tuHgvE6sXgl4dU8oAOqEmAKZjSDa5pDS2gZHdFwwE6EYsSSB', '2022-05-22 09:19:27', '2022-05-22 16:19:27', '', '', '', '', '', '', '2022-06-09', '2022-06-09'),
 (10, 'jemaat', 'Ida Sinulingga', 'idasinulingga', '$2y$10$jd7/9qhCRHKlPVWNqTMbKu1n4q/U.NsnltOWgmoqLo2ZOUsKMCbYG', NULL, '2022-06-09 00:22:35', '2022-06-09 10:44:16', 'Perempuan', 'Bpk Harahap', 'Samosir', '08111321562', 'Aktif', 'man_avatar.png', '2022-03-08', '2022-06-07'),
 (11, 'jemaat', 'Iwan Naibaho', 'iwannai', '$2y$10$U3xtWjesK5ZyyO4UCNSH6uI/UiSTdny/wYVXae7iXfomfT4bBb6iK', NULL, '2022-06-09 04:51:56', '2022-06-09 11:52:55', 'Laki-laki', 'Nai Baho', NULL, '08111321562', 'Status Jemaat', 'man_avatar.png', '2022-06-07', '2022-06-09'),
 (12, 'jemaat', 'Rina Turnip', 'rina', '$2y$10$iH1BguzvuxKuvupJop6xdukK3Yilh6U2eVVsflJP0kZFc.i6vNl56', NULL, '2022-06-10 07:55:51', '2022-06-10 14:59:01', 'Perempuan', 'Bpk. Indah', NULL, NULL, 'Status Jemaat', NULL, '2022-06-08', '2022-06-08'),
@@ -426,9 +483,39 @@ INSERT INTO `users` (`id`, `role`, `nama`, `username`, `password`, `remember_tok
 (16, 'Sekretaris Jemaat', 'St.S Silaen', 'pengurusHKI', '$2y$10$3OJ3JYCZnCA/Tn3gChnrU.bxNrwMSkdj2JdS3vHyNSF9E3ewAvg2C', '5mWA445wzhbfcAoKLANcjjmPTtvj53loxDejYnnOXpN47jc1Bu3vzoDJ84XH', '2022-06-12 05:17:40', '2022-06-12 12:17:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (17, 'Jabatan', 'St. A Lumbantoruan', 'pengurusHKI', '$2y$10$1jHiCAoX9zn1KyMjEMR2We246un1FUn5wM0UaIPTfv/o4ur0Ch/dS', 'oaakZXh56Uj5zFOIgWFDWxdi7ZJCQ5Btf6A34QSl3ar8iu4OWSDw93vdfd10', '2022-06-12 05:18:18', '2022-06-12 12:18:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `worship`
+--
+
+CREATE TABLE `worship` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `judul` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hari` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal` date NOT NULL,
+  `tema` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `worship`
+--
+
+INSERT INTO `worship` (`id`, `judul`, `hari`, `tanggal`, `tema`, `is_active`, `created_at`, `updated_at`) VALUES
+(2, 'Minggu Kantante', 'Selasa', '2022-06-07', 'Bernyanyilah Bagi Tuhan/Marende Mahamu di Debata', 1, '2022-06-12 20:58:16', '2022-06-12 22:41:10');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `about`
+--
+ALTER TABLE `about`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `album_gallery`
@@ -518,6 +605,12 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indeks untuk tabel `procedure`
+--
+ALTER TABLE `procedure`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `slider`
 --
 ALTER TABLE `slider`
@@ -530,8 +623,20 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `worship`
+--
+ALTER TABLE `worship`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
+
+--
+-- AUTO_INCREMENT untuk tabel `about`
+--
+ALTER TABLE `about`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `album_gallery`
@@ -549,13 +654,13 @@ ALTER TABLE `daftar_babtis`
 -- AUTO_INCREMENT untuk tabel `data_jemaat`
 --
 ALTER TABLE `data_jemaat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_keuangan`
 --
 ALTER TABLE `data_keuangan`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_peneguhan_sidi`
@@ -585,7 +690,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `pendaftaran_sakramens`
@@ -597,7 +702,7 @@ ALTER TABLE `pendaftaran_sakramens`
 -- AUTO_INCREMENT untuk tabel `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengurus_gereja`
@@ -612,6 +717,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `procedure`
+--
+ALTER TABLE `procedure`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `slider`
 --
 ALTER TABLE `slider`
@@ -622,6 +733,12 @@ ALTER TABLE `slider`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT untuk tabel `worship`
+--
+ALTER TABLE `worship`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
